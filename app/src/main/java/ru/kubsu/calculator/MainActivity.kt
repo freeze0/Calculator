@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!leftEdt.text.toString().isBlank() && !rightEdt.text.toString().isBlank()
             && !signTv.text.toString().isBlank() && op.toString() != signTv.text.toString()) {
-            leftEdt.setText(calculate(op))
+            leftEdt.setText(calculate())
             rightEdt.setText("")
             rightEdt.requestFocus()
             mainTv.text = ""
@@ -128,34 +128,6 @@ class MainActivity : AppCompatActivity() {
         var leftNum = leftEdt.text.toString().toDoubleOrNull()
         var rightNum = rightEdt.text.toString().toDoubleOrNull()
         val operation = signTv.text.toString()
-        var result : String? = null
-        if (mainTv.text.toString().isBlank()) {
-            if (leftNum != null && rightNum != null) {
-                val result = when (operation) {
-                    "+" -> leftNum + rightNum
-                    "-" -> leftNum - rightNum
-                    "*" -> leftNum * rightNum
-                    "/" -> {
-                        if (rightNum != 0.0) {
-                            leftNum / rightNum
-                        } else {
-                            Double.NaN
-                        }
-                    }
-                    else -> {
-                        Double.NaN
-                    }
-                }
-                return result.toString()
-            }
-        }
-        return null
-    }
-
-    private fun calculate(newOperation : String) : String? {
-        var leftNum = leftEdt.text.toString().toDoubleOrNull()
-        var rightNum = rightEdt.text.toString().toDoubleOrNull()
-        val operation = newOperation
         var result : String? = null
         if (mainTv.text.toString().isBlank()) {
             if (leftNum != null && rightNum != null) {
